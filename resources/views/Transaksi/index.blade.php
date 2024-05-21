@@ -22,15 +22,12 @@
            @include('Layout.head')
             
 <div class="main-content container-fluid">
-    <div class="page-title">
-        <h3>Dashboard</h3>
-        <p class="text-subtitle text-muted">A good dashboard to display your statistics</p>
-    </div>
+    
     <section class="section">
         
         <div class="row mb-4">
             <div class="col-md-12">
-                @include('Layout.info')
+       
                 
 <div
     class="table-responsive"
@@ -43,7 +40,12 @@
 </form>
     <table
         class="table table-striped table-hover table-borderless align-middle"
-    >
+    > @if (session('success'))
+                  <div class="alert alert-success">
+                      {{ session('success') }}
+                  </div>
+                  
+              @endif
         <thead class="table-light">
             <caption>
                 Data Transaksi
@@ -165,7 +167,7 @@
   
             @foreach ($transaksi as $t )
                 <tr  class="table-primary">
-                    <td>{{ $t->id }}</td>
+                       <td>{{ $loop->iteration }}</td>
                     <td>{{ $t->nama_barang }}</td>
                     <td>{{ $t->stok }}</td>
                     <td>{{ $t->jumlah_terjual }}</td>

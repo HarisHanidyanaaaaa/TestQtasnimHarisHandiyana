@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Perbandingan Jenis Barang</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaksi - Compare</title>
+    
+    <link rel="stylesheet" href="{{ url('') }}/dist/assets/css/bootstrap.css">
+    
+    <link rel="stylesheet" href="{{ url('') }}/dist/assets/vendors/chartjs/Chart.min.css">
+
+    <link rel="stylesheet" href="{{ url('') }}/dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="{{ url('') }}/dist/assets/css/app.css">
+    <link rel="shortcut icon" href="{{ url('') }}/dist/assets/images/favicon.svg" type="image/x-icon">
 </head>
 <body>
     <h1>Perbandingan Jenis Barang</h1>
@@ -40,5 +50,14 @@
     @else
         <p>Tidak ada transaksi.</p>
     @endif
+        <script src="{{ url('') }}/dist/assets/js/feather-icons/feather.min.js"></script>
+    <script src="{{ url('') }}/dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="{{ url('') }}/dist/assets/js/app.js"></script>
+    
+    <script src="{{ url('') }}/dist/assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="{{ url('') }}/dist/assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="{{ url('') }}/dist/assets/js/pages/dashboard.js"></script>
+
+    <script src="{{ url('') }}/dist/assets/js/main.js"></script>
 </body>
 </html>

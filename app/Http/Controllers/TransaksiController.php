@@ -62,20 +62,16 @@ class TransaksiController extends Controller
     {
         $query = TransaksiModels::query();
 
-        // Filter berdasarkan jenis barang
         if ($request->has('jenis_barang') && !empty($request->jenis_barang)) {
             $query->where('jenis_barang', $request->jenis_barang);
         }
 
-        // Filter berdasarkan rentang waktu
         if ($request->has('start_date') && $request->has('end_date')) {
             $query->whereBetween('tanggal_transaksi', [$request->start_date, $request->end_date]);
         }
 
-        // Mendapatkan transaksi terbanyak
         $terbanyak = (clone $query)->orderBy('jumlah_terjual', 'desc')->first();
 
-        // Mendapatkan transaksi terendah
         $terendah = (clone $query)->orderBy('jumlah_terjual', 'asc')->first();
 
         return view('Transaksi.compare', compact('terbanyak', 'terendah'));

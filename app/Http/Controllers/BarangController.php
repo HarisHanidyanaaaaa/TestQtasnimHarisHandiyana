@@ -20,7 +20,7 @@ class BarangController extends Controller
         $barang->stok = $request->stok;
         $barang->jenis_barang = $request->jenis_barang;
         $barang->save();
-        return redirect('/Barang-Index');
+        return redirect('/Barang-Index')->with('success', 'Data barang berhasil ditambahkan');
     }
     public function update(Request $request, $id)
     {
@@ -29,7 +29,7 @@ class BarangController extends Controller
         $barang->stok = $request->stok;
         $barang->jenis_barang = $request->jenis_barang;
         $barang->save();
-        return redirect('/Barang-Index');
+        return redirect('/Barang-Index')->with('success', 'Data barang berhasil diubah');
     }
     public function destroy($id)
     {

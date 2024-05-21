@@ -22,15 +22,17 @@
            @include('Layout.head')
             
 <div class="main-content container-fluid">
-    <div class="page-title">
-        <h3>Dashboard</h3>
-        <p class="text-subtitle text-muted">A good dashboard to display your statistics</p>
-    </div>
+   
     <section class="section">
         
         <div class="row mb-4">
             <div class="col-md-12">
-                @include('Layout.info')
+              @if (session('success'))
+                  <div class="alert alert-success">
+                      {{ session('success') }}
+                  </div>
+                  
+              @endif
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title">Data Barang  | jika ingin menambah data klik disini</h4>
