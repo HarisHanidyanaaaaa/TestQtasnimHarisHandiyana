@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
     <title>Transaksi - Index</title>
     
     <link rel="stylesheet" href="{{ url('') }}/dist/assets/css/bootstrap.css">
@@ -11,7 +10,7 @@
 
     <link rel="stylesheet" href="{{ url('') }}/dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="{{ url('') }}/dist/assets/css/app.css">
-    <link rel="shortcut icon" href="{{ url('') }}/dist/assets/images/favicon.svg" type="image/x-icon">
+   
 </head>
 <body>
     <div id="app">
@@ -182,7 +181,88 @@
                 }">
         Hapus
     </a>
+  <button type="button" class="btn btn-info" 
+        data-bs-toggle="modal" 
+        data-bs-target="#updateModal" 
+        data-id="{{ $t->id }}"
+        data-namabarang="{{ $t->nama_barang }}"
+        data-stok="{{ $t->stok }}"
+        data-jumlahterjual="{{ $t->jumlah_terjual }}"
+        data-tanggaltransaksi="{{ $t->tanggal_transaksi }}"
+        data-jenisbarang="{{ $t->jenis_barang }}">
+        Update
+    </button>
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateModalLabel">Update Data Transaksi</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Form untuk update data -->
+            <form id="updateForm" action="{{ route('Transaksi-Update', $t->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group mb-3">
+                        <label for="updateNamaBarang">Nama Barang</label>
+                        <input type="text" class="form-control" id="updateNamaBarang" name="nama_barang" readonly>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="updateStok">Stok</label>
+                        <input type="number" class="form-control" id="updateStok" name="stok" readonly>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="updateJumlahTerjual">Jumlah Terjual</label>
+                        <input type="number" class="form-control" id="updateJumlahTerjual" name="jumlah_terjual">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="updateTanggalTransaksi">Tanggal Transaksi</label>
+                        <input type="date" class="form-control" id="updateTanggalTransaksi" name="tanggal_transaksi">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="updateJenisBarang">Jenis Barang</label>
+                        <input type="text" class="form-control" id="updateJenisBarang" name="jenis_barang" readonly>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var updateModal = document.getElementById('updateModal');
+        updateModal.addEventListener('show.bs.modal', function(event) {
+            var button = event.relatedTarget;
 
+            var id = button.getAttribute('data-id');
+            var namaBarang = button.getAttribute('data-namabarang');
+            var stok = button.getAttribute('data-stok');
+            var jumlahTerjual = button.getAttribute('data-jumlahterjual');
+            var tanggalTransaksi = button.getAttribute('data-tanggaltransaksi');
+            var jenisBarang = button.getAttribute('data-jenisbarang');
+            
+
+            var modalForm = updateModal.querySelector('#updateForm');
+            modalForm.action = '/transaksi/' + id; 
+            
+            var inputNamaBarang = updateModal.querySelector('#updateNamaBarang');
+            var inputStok = updateModal.querySelector('#updateStok');
+            var inputJumlahTerjual = updateModal.querySelector('#updateJumlahTerjual');
+            var inputTanggalTransaksi = updateModal.querySelector('#updateTanggalTransaksi');
+            var inputJenisBarang = updateModal.querySelector('#updateJenisBarang');
+            
+            inputNamaBarang.value = namaBarang;
+            inputStok.value = stok;
+            inputJumlahTerjual.value = jumlahTerjual;
+            inputTanggalTransaksi.value = tanggalTransaksi;
+            inputJenisBarang.value = jenisBarang;
+        });
+    });
+</script>
     <form id="delete-form-{{$t->id}}" action="{{ route('Transaksi-Delete', $t->id) }}" method="POST" style="display: none;">
         @csrf
         @method('DELETE')

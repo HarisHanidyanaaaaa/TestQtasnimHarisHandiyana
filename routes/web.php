@@ -28,7 +28,7 @@ Route::get('/Transaksi-Index', [TransaksiController::class, 'index'])->name('Tra
 Route::get('/transaksi/terbanyak', [TransaksiController::class, 'terbanyak'])->name('transaksi.terbanyak');
 Route::get('/Terendah', [TransaksiController::class, 'terendah'])->name('Terendah');
 Route::post('/Transaksi-Store', [TransaksiController::class, 'store'])->name('Transaksi-Store');
-Route::put('/Transaksi-Update/{id}', [TransaksiController::class, 'update'])->name('Transaksi-Update');
+Route::put('/transaksi/{id}', [TransaksiController::class, 'update'])->name('Transaksi-Update');
 Route::delete('/Transaksi-Delete/{id}', [TransaksiController::class, 'destroy'])->name('Transaksi-Delete');
 
 

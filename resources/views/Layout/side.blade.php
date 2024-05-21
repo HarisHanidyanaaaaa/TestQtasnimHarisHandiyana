@@ -1,7 +1,7 @@
 <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
     <div class="sidebar-header">
-        <img src="{{ url('') }}/dist/assets/images/logo.svg" alt="" srcset="">
+   <h3>Haris Handiyana</h3>
     </div>
     <div class="sidebar-menu">
         <ul class="menu">

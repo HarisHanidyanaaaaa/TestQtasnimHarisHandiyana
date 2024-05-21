@@ -57,7 +57,22 @@ class TransaksiController extends Controller
 
         return redirect('/Transaksi-Index')->with('success', 'Data transaksi berhasil ditambahkan');
     }
+    public function update(Request $request, $id)
+    {
 
+        $request->validate([
+            'jumlah_terjual' => 'required|numeric',
+            'tanggal_transaksi' => 'required|date',
+        ]);
+
+        $transaksi = TransaksiModels::find($id);
+
+        $transaksi->jumlah_terjual = $request->input('jumlah_terjual');
+        $transaksi->tanggal_transaksi = $request->input('tanggal_transaksi');
+        $transaksi->save();
+
+        return redirect()->route('Transaksi-Index')->with('success', 'Data transaksi berhasil diperbarui.');
+    }
     public function compareJenisBarang(Request $request)
     {
         $query = TransaksiModels::query();

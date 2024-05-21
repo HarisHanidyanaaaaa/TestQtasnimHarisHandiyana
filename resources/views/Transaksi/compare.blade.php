@@ -14,9 +14,12 @@
     <link rel="shortcut icon" href="{{ url('') }}/dist/assets/images/favicon.svg" type="image/x-icon">
 </head>
 <body>
-    <h1>Perbandingan Jenis Barang</h1>
+   
 
-    <form method="GET" action="{{ route('transaksi.compare') }}">
+  <div class="container mt-5">
+     <h3>Perbandingan Jenis Barang</h3>
+<div class="card">
+      <form method="GET" action="{{ route('transaksi.compare') }}">
         <label for="jenis_barang">Jenis Barang:</label>
         <input type="text" id="jenis_barang" name="jenis_barang" value="{{ request('jenis_barang') }}">
 
@@ -28,8 +31,12 @@
 
         <button type="submit">Filter</button>
     </form>
+  </div>
 
-    <h2>Transaksi Terbanyak</h2>
+
+   <div class="row">
+    <div class="col-md-6 ">
+     <h2>Transaksi Terbanyak</h2>
     @if($terbanyak)
         <p>ID Transaksi: {{ $terbanyak->id }}</p>
         <p>Nama Barang: {{ $terbanyak->nama_barang }}</p>
@@ -39,8 +46,9 @@
     @else
         <p>Tidak ada transaksi.</p>
     @endif
-
-    <h2>Transaksi Terendah</h2>
+    </div>
+    <div class="col-md-6">
+     <h2>Transaksi Terendah</h2>
     @if($terendah)
         <p>ID Transaksi: {{ $terendah->id }}</p>
         <p>Nama Barang: {{ $terendah->nama_barang }}</p>
@@ -50,6 +58,11 @@
     @else
         <p>Tidak ada transaksi.</p>
     @endif
+    </div>
+  </div>
+
+  </div>
+   
         <script src="{{ url('') }}/dist/assets/js/feather-icons/feather.min.js"></script>
     <script src="{{ url('') }}/dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="{{ url('') }}/dist/assets/js/app.js"></script>
