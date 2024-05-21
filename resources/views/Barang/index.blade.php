@@ -35,10 +35,10 @@
               @endif
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="card-title">Data Barang  | jika ingin menambah data klik disini</h4>
-                      <a href="" type="button"
+                        <h4 class="card-title">Data Barang  | jika ingin menambah data   <a href="" type="button"
                     data-bs-toggle="modal"
-                    data-bs-target="#modalId">tambah data</a>
+                    data-bs-target="#modalId">klik disini</a></h4>
+                     
                 <!-- Modal -->
                 <div
                     class="modal fade"

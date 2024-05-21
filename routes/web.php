@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [BarangController::class, 'index'])->name('Barang-Index');
 Route::get('/Barang-Index', [BarangController::class, 'index'])->name('Barang-Index');
 Route::post('/Barang-Store', [BarangController::class, 'store'])->name('Barang-Store');
 Route::put('/Barang-Update/{id}', [BarangController::class, 'update'])->name('Barang-Update');
